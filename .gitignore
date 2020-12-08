@@ -1,2 +1,4 @@
 blogenv
 src/__pycache__
+.idea/
+src/database/__pycache__/
