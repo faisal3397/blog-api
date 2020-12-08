@@ -32,7 +32,7 @@ def get_posts():
 @app.route('/posts/<int:post_id>/comments')
 def get_post_comments(post_id):
     comments = Comment.query.filter(Comment.post_id == post_id).all()
-    print(comments)
+
     if len(comments) == 0:
         abort(404)
 
@@ -140,4 +140,32 @@ def create_comment(post_id):
     except():
         abort(400)
 
+# Error Handling
+
+
+@app.errorhandler(422)
+def unprocessable(error):
+    return jsonify({
+        "success": False,
+        "error": 422,
+        "message": "unprocessable"
+    }), 422
+
+
+@app.errorhandler(400)
+def bad_request(error):
+    return jsonify({
+        "success": False,
+        "error": 400,
+        "message": "Bad Request"
+    }), 400
+
+
+@app.errorhandler(404)
+def not_found(error):
+    return jsonify({
+        "success": False,
+        "error": 404,
+        "message": "Not Found"
+    }), 404
 
