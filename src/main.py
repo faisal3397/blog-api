@@ -46,7 +46,8 @@ def get_post_comments(post_id):
 
 
 @app.route('/posts', methods=['POST'])
-def create_post():
+@requires_auth('post:posts')
+def create_post(jwt):
     body = request.get_json()
     title = body.get('title', None)
     date = body.get('date', None)
@@ -69,7 +70,8 @@ def create_post():
 
 
 @app.route('/posts/<int:post_id>', methods=['PATCH'])
-def update_post(post_id):
+@requires_auth('patch:posts')
+def update_post(jwt, post_id):
     body = request.get_json()
     title = body.get('title')
     date = body.get('date')
@@ -96,7 +98,8 @@ def update_post(post_id):
 
 
 @app.route('/posts/<int:post_id>', methods=['DELETE'])
-def delete_post(post_id):
+@requires_auth('delete:posts')
+def delete_post(jwt, post_id):
 
     try:
         post = Post.query.filter(Post.id == post_id).one_or_none()
@@ -116,7 +119,8 @@ def delete_post(post_id):
 
 
 @app.route('/posts/<int:post_id>/comments', methods=['POST'])
-def create_comment(post_id):
+@requires_auth('post:comments')
+def create_comment(jwt, post_id):
     body = request.get_json()
     date = body.get('date', None)
     content = body.get('content', None)

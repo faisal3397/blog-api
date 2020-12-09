@@ -16,7 +16,7 @@ class AuthError(Exception):
 
 
 def get_auth_header():
-    auth_header = request.header.get('Authorization', None)
+    auth_header = request.headers.get('Authorization', None)
 
     if not auth_header:
         raise AuthError({
@@ -60,7 +60,7 @@ def verify_decode_jwt(token):
             'description': 'Authorization Header was malformed'
         }, 401)
 
-    for key in jwks:
+    for key in jwks['keys']:
         if key['kid'] == unverified_header['kid']:
             rsa_key = {
                 'kty': unverified_header['kty'],
