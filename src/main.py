@@ -169,3 +169,12 @@ def not_found(error):
         "message": "Not Found"
     }), 404
 
+
+# @app.errorhandler(AuthError)
+# def auth_error(error):
+#     print(error)
+#     return jsonify({
+#         "success": False,
+#         "error": error.status_code,
+#         "message": error.error
+#     }), error.status_code
