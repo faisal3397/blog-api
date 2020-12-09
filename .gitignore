@@ -3,3 +3,5 @@ src/__pycache__
 .idea/
 src/database/__pycache__/
 setup.sh
+url.txt
+src/auth/__pycache__/

@@ -1,6 +1,7 @@
 from flask import Flask, request, jsonify, abort
 from flask_cors import CORS
 from .database.models import setup_db, Post, Comment
+from .auth.auth import AuthError, requires_auth
 
 app = Flask(__name__)
 setup_db(app)
@@ -170,11 +171,11 @@ def not_found(error):
     }), 404
 
 
-# @app.errorhandler(AuthError)
-# def auth_error(error):
-#     print(error)
-#     return jsonify({
-#         "success": False,
-#         "error": error.status_code,
-#         "message": error.error
-#     }), error.status_code
+@app.errorhandler(AuthError)
+def auth_error(error):
+    print(error)
+    return jsonify({
+        "success": False,
+        "error": error.status_code,
+        "message": error.error
+    }), error.status_code
