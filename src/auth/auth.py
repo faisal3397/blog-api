@@ -63,11 +63,11 @@ def verify_decode_jwt(token):
     for key in jwks['keys']:
         if key['kid'] == unverified_header['kid']:
             rsa_key = {
-                'kty': unverified_header['kty'],
-                'kid': unverified_header['kid'],
-                'use': unverified_header['use'],
-                'n': unverified_header['n'],
-                'e': unverified_header['e'],
+                'kty': key['kty'],
+                'kid': key['kid'],
+                'use': key['use'],
+                'n': key['n'],
+                'e': key['e'],
             }
     if rsa_key:
         try:
