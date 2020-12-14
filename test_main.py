@@ -17,6 +17,7 @@ class BlogTestCase(unittest.TestCase):
         self.database_name = "blog_test"
         self.database_path = "postgres://{}/{}".format('localhost:5432', self.database_name)
         setup_db(self.app, self.database_path)
+
         self.new_post = {
             "title": "My New Post 3",
             "date": "Tue, 08 Dec 2020 15:53:58 GMT",
@@ -25,6 +26,21 @@ class BlogTestCase(unittest.TestCase):
 
         self.bad_request_post = {
             "content": "Lorem ipsum dolor sit amet,"
+        }
+
+        self.updated_post = {
+            "title": "Modified title 123",
+            "date": "Tue, 08 Dec 2020 16:53:58 GMT",
+            "content": "Modified content 1232341242"
+        }
+
+        self.comment = {
+            "content": "Hi your post #3 is great",
+            "date": "Tue, 08 Dec 2020 16:02:48 GMT"
+        }
+
+        self.bad_request_comment = {
+            "date": "Tue, 08 Dec 2020 16:02:48 GMT"
         }
 
         self.blog_owner_token = os.environ["BLOG_OWNER_TOKEN"]
@@ -40,6 +56,44 @@ class BlogTestCase(unittest.TestCase):
     def tearDown(self):
         """Executed after reach test"""
         pass
+
+    def test_create_new_post(self):
+        headers = {'Authorization': 'Bearer {}'.format(self.blog_owner_token)}
+        res = self.client().post('/posts', json=self.new_post, headers=headers)
+        data = json.loads(res.data)
+
+        self.assertEqual(res.status_code, 201)
+        self.assertTrue(data["post"])
+        self.assertEqual(data["success"], True)
+
+    def test_create_new_post_bad_request(self):
+        headers = {'Authorization': 'Bearer {}'.format(self.blog_owner_token)}
+        res = self.client().post('/posts', json=self.bad_request_post, headers=headers)
+        data = json.loads(res.data)
+
+        self.assertEqual(res.status_code, 400)
+        self.assertEqual(data["error"], 400)
+        self.assertEqual(data["message"], "Bad Request")
+        self.assertEqual(data["success"], False)
+
+    def test_create_comment(self):
+        headers = {'Authorization': 'Bearer {}'.format(self.blog_owner_token)}
+        res = self.client().post('/posts/1/comments', json=self.comment, headers=headers)
+        data = json.loads(res.data)
+
+        self.assertEqual(res.status_code, 201)
+        self.assertTrue(data["post"])
+        self.assertEqual(data["comment"], True)
+
+    def test_create_comment_bad_request(self):
+        headers = {'Authorization': 'Bearer {}'.format(self.blog_owner_token)}
+        res = self.client().post('/posts/1/comments', json=self.bad_request_comment, headers=headers)
+        data = json.loads(res.data)
+
+        self.assertEqual(res.status_code, 400)
+        self.assertEqual(data["error"], 400)
+        self.assertEqual(data["message"], "Bad Request")
+        self.assertEqual(data["success"], False)
 
     def test_get_all_posts(self):
         res = self.client().get('/posts')
@@ -73,23 +127,45 @@ class BlogTestCase(unittest.TestCase):
         self.assertEqual(data["message"], "Not Found")
         self.assertEqual(data["success"], False)
 
-    def test_create_new_post(self):
+    def test_update_post(self):
         headers = {'Authorization': 'Bearer {}'.format(self.blog_owner_token)}
-        res = self.client().post('/posts', json=self.new_post, headers=headers)
+        res = self.client().patch('/posts/3', json=self.updated_post, headers=headers)
         data = json.loads(res.data)
 
-        self.assertEqual(res.status_code, 201)
+        self.assertEqual(res.status_code, 200)
         self.assertTrue(data["post"])
         self.assertEqual(data["success"], True)
 
-    def test_create_new_post_bad_request(self):
+    def test_update_post_not_found(self):
         headers = {'Authorization': 'Bearer {}'.format(self.blog_owner_token)}
-        res = self.client().post('/posts', json=self.bad_request_post, headers=headers)
+        res = self.client().patch('/posts/3000', json=self.updated_post, headers=headers)
         data = json.loads(res.data)
 
-        self.assertEqual(res.status_code, 400)
-        self.assertEqual(data["error"], 400)
-        self.assertEqual(data["message"], "Bad Request")
+        self.assertEqual(res.status_code, 404)
+        self.assertEqual(data["error"], 404)
+        self.assertEqual(data["message"], "Not Found")
+        self.assertEqual(data["success"], False)
+
+    def test_delete_post(self):
+        headers = {'Authorization': 'Bearer {}'.format(self.blog_owner_token)}
+        res = self.client().delete('/posts/6', headers=headers)
+        data = json.loads(res.data)
+
+        post = Post.query.filter(Post.id == 6).one_or_none()
+
+        self.assertEqual(res.status_code, 200)
+        self.assertTrue(data["delete"])
+        self.assertEqual(data["success"], True)
+        self.assertEqual(post, None)
+
+    def test_delete_post_not_found(self):
+        headers = {'Authorization': 'Bearer {}'.format(self.blog_owner_token)}
+        res = self.client().delete('/posts/1000', headers=headers)
+        data = json.loads(res.data)
+
+        self.assertEqual(res.status_code, 404)
+        self.assertEqual(data["error"], 404)
+        self.assertEqual(data["message"], "Not Found")
         self.assertEqual(data["success"], False)
 
 
