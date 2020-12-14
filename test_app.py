@@ -4,7 +4,7 @@ import json
 from flask_sqlalchemy import SQLAlchemy
 
 
-from src.app import create_app
+from src.app import app
 from src.database.models import setup_db, Post, Comment
 
 
@@ -12,7 +12,7 @@ class BlogTestCase(unittest.TestCase):
 
     def setUp(self):
         """Define test variables and initialize app."""
-        self.app = create_app()
+        self.app = app
         self.client = self.app.test_client
         self.database_name = "blog_test"
         self.database_path = "postgres://{}/{}".format('localhost:5432', self.database_name)

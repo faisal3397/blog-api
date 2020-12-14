@@ -176,3 +176,6 @@ def create_app():
         }), error.status_code
 
     return app
+
+
+app = create_app()
