@@ -14,8 +14,7 @@ class BlogTestCase(unittest.TestCase):
         """Define test variables and initialize app."""
         self.app = app
         self.client = self.app.test_client
-        self.database_name = "blog_test"
-        self.database_path = "postgres://{}/{}".format('localhost:5432', self.database_name)
+        self.database_path = os.environ["DATABASE_URL"]
         setup_db(self.app, self.database_path)
 
         self.new_post = {

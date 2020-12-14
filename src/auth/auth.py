@@ -1,13 +1,13 @@
+import os
 import json
 from flask import request
 from jose import jwt
 from functools import wraps
 from urllib.request import urlopen
 
-AUTH0_DOMAIN = 'fsnd3397.us.auth0.com'
+AUTH0_DOMAIN = os.environ["AUTH0_DOMAIN"]
 ALGORITHMS = ['RS256']
-API_AUDIENCE = 'blog-api'
-
+API_AUDIENCE = os.environ["API_AUDIENCE"]
 
 class AuthError(Exception):
     def __init__(self, error, status_code):
