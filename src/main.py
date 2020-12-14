@@ -169,7 +169,6 @@ def create_app():
 
     @app.errorhandler(AuthError)
     def auth_error(error):
-        print(error)
         return jsonify({
             "success": False,
             "error": error.status_code,

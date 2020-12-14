@@ -66,6 +66,16 @@ class BlogTestCase(unittest.TestCase):
         self.assertTrue(data["post"])
         self.assertEqual(data["success"], True)
 
+    # Auth User is not allowed to create post
+    def test_create_new_post_as_auth_user(self):
+        headers = {'Authorization': 'Bearer {}'.format(self.auth_user_token)}
+        res = self.client().post('/posts', json=self.new_post, headers=headers)
+        data = json.loads(res.data)
+
+        self.assertEqual(res.status_code, 401)
+        self.assertEqual(data["error"], 401)
+        self.assertEqual(data["success"], False)
+
     def test_create_new_post_bad_request(self):
         headers = {'Authorization': 'Bearer {}'.format(self.blog_owner_token)}
         res = self.client().post('/posts', json=self.bad_request_post, headers=headers)
@@ -166,6 +176,16 @@ class BlogTestCase(unittest.TestCase):
         self.assertEqual(res.status_code, 404)
         self.assertEqual(data["error"], 404)
         self.assertEqual(data["message"], "Not Found")
+        self.assertEqual(data["success"], False)
+
+    # Auth User is not allowed to delete post
+    def test_delete_post_as_auth_user(self):
+        headers = {'Authorization': 'Bearer {}'.format(self.auth_user_token)}
+        res = self.client().delete('/posts/11', headers=headers)
+        data = json.loads(res.data)
+
+        self.assertEqual(res.status_code, 401)
+        self.assertEqual(data["error"], 401)
         self.assertEqual(data["success"], False)
 
 
