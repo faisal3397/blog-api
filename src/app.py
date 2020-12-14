@@ -1,7 +1,7 @@
 from flask import Flask, request, jsonify, abort
 from flask_cors import CORS
-from .database.models import setup_db, Post, Comment
-from .auth.auth import AuthError, requires_auth
+from src.database.models import setup_db, Post, Comment
+from src.auth.auth import AuthError, requires_auth
 
 POSTS_PER_PAGE = 10
 
