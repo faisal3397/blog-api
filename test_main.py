@@ -78,16 +78,16 @@ class BlogTestCase(unittest.TestCase):
 
     def test_create_comment(self):
         headers = {'Authorization': 'Bearer {}'.format(self.blog_owner_token)}
-        res = self.client().post('/posts/1/comments', json=self.comment, headers=headers)
+        res = self.client().post('/posts/3/comments', json=self.comment, headers=headers)
         data = json.loads(res.data)
 
         self.assertEqual(res.status_code, 201)
-        self.assertTrue(data["post"])
-        self.assertEqual(data["comment"], True)
+        self.assertTrue(data["comment"])
+        self.assertEqual(data["success"], True)
 
     def test_create_comment_bad_request(self):
         headers = {'Authorization': 'Bearer {}'.format(self.blog_owner_token)}
-        res = self.client().post('/posts/1/comments', json=self.bad_request_comment, headers=headers)
+        res = self.client().post('/posts/3/comments', json=self.bad_request_comment, headers=headers)
         data = json.loads(res.data)
 
         self.assertEqual(res.status_code, 400)
@@ -148,7 +148,7 @@ class BlogTestCase(unittest.TestCase):
 
     def test_delete_post(self):
         headers = {'Authorization': 'Bearer {}'.format(self.blog_owner_token)}
-        res = self.client().delete('/posts/6', headers=headers)
+        res = self.client().delete('/posts/11', headers=headers)
         data = json.loads(res.data)
 
         post = Post.query.filter(Post.id == 6).one_or_none()

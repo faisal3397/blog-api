@@ -1,0 +1,183 @@
+--
+-- PostgreSQL database dump
+--
+
+-- Dumped from database version 12.3
+-- Dumped by pg_dump version 12.3
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET idle_in_transaction_session_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SELECT pg_catalog.set_config('search_path', '', false);
+SET check_function_bodies = false;
+SET xmloption = content;
+SET client_min_messages = warning;
+SET row_security = off;
+
+SET default_tablespace = '';
+
+SET default_table_access_method = heap;
+
+--
+-- Name: comments; Type: TABLE; Schema: public; Owner: faisal
+--
+
+CREATE TABLE public.comments (
+    id integer NOT NULL,
+    date timestamp without time zone,
+    content character varying,
+    post_id integer
+);
+
+
+ALTER TABLE public.comments OWNER TO faisal;
+
+--
+-- Name: comments_id_seq; Type: SEQUENCE; Schema: public; Owner: faisal
+--
+
+CREATE SEQUENCE public.comments_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.comments_id_seq OWNER TO faisal;
+
+--
+-- Name: comments_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: faisal
+--
+
+ALTER SEQUENCE public.comments_id_seq OWNED BY public.comments.id;
+
+
+--
+-- Name: posts; Type: TABLE; Schema: public; Owner: faisal
+--
+
+CREATE TABLE public.posts (
+    id integer NOT NULL,
+    title character varying,
+    date timestamp without time zone,
+    content character varying
+);
+
+
+ALTER TABLE public.posts OWNER TO faisal;
+
+--
+-- Name: posts_id_seq; Type: SEQUENCE; Schema: public; Owner: faisal
+--
+
+CREATE SEQUENCE public.posts_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.posts_id_seq OWNER TO faisal;
+
+--
+-- Name: posts_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: faisal
+--
+
+ALTER SEQUENCE public.posts_id_seq OWNED BY public.posts.id;
+
+
+--
+-- Name: comments id; Type: DEFAULT; Schema: public; Owner: faisal
+--
+
+ALTER TABLE ONLY public.comments ALTER COLUMN id SET DEFAULT nextval('public.comments_id_seq'::regclass);
+
+
+--
+-- Name: posts id; Type: DEFAULT; Schema: public; Owner: faisal
+--
+
+ALTER TABLE ONLY public.posts ALTER COLUMN id SET DEFAULT nextval('public.posts_id_seq'::regclass);
+
+
+--
+-- Data for Name: comments; Type: TABLE DATA; Schema: public; Owner: faisal
+--
+
+COPY public.comments (id, date, content, post_id) FROM stdin;
+2	2020-12-08 16:02:48	Hi your post #3 sucks just like you	3
+3	2020-12-08 16:02:48	Hi your post #3 sucks just like you	3
+4	2020-12-08 16:02:48	Hi your post #3 sucks just like you	3
+5	2020-12-08 16:02:48	Hi your post #3 sucks just like you	3
+6	2020-12-08 16:02:48	Hi your post #3 sucks just like you	3
+7	2020-12-08 16:02:48	Hi your post #3 sucks just like you	3
+8	2020-12-08 16:02:48	Hi your post #3 sucks just like you	3
+9	2020-12-08 16:02:48	Hi your post #3 sucks just like you	3
+10	2020-12-08 16:02:48	Hi your post #3 sucks just like you	3
+11	2020-12-08 16:02:48	Hi your post #3 sucks just like you	3
+12	2020-12-08 16:02:48	Hi your post #3 sucks just like you	3
+13	2020-12-08 16:02:48	Hi your post #3 sucks just like you	3
+14	2020-12-08 16:02:48	Hi your post #3 sucks just like you	3
+\.
+
+
+--
+-- Data for Name: posts; Type: TABLE DATA; Schema: public; Owner: faisal
+--
+
+COPY public.posts (id, title, date, content) FROM stdin;
+4	My New Post 3	2020-12-08 15:53:58	Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+5	My New Post 3	2020-12-08 15:53:58	Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+11	My New Post 3	2020-12-08 15:53:58	Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+3	Modified title 123	2020-12-08 16:53:58	Modified content 1232341242
+\.
+
+
+--
+-- Name: comments_id_seq; Type: SEQUENCE SET; Schema: public; Owner: faisal
+--
+
+SELECT pg_catalog.setval('public.comments_id_seq', 14, true);
+
+
+--
+-- Name: posts_id_seq; Type: SEQUENCE SET; Schema: public; Owner: faisal
+--
+
+SELECT pg_catalog.setval('public.posts_id_seq', 12, true);
+
+
+--
+-- Name: comments comments_pkey; Type: CONSTRAINT; Schema: public; Owner: faisal
+--
+
+ALTER TABLE ONLY public.comments
+    ADD CONSTRAINT comments_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: posts posts_pkey; Type: CONSTRAINT; Schema: public; Owner: faisal
+--
+
+ALTER TABLE ONLY public.posts
+    ADD CONSTRAINT posts_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: comments comments_post_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: faisal
+--
+
+ALTER TABLE ONLY public.comments
+    ADD CONSTRAINT comments_post_id_fkey FOREIGN KEY (post_id) REFERENCES public.posts(id) ON DELETE CASCADE;
+
+
+--
+-- PostgreSQL database dump complete
+--
+
