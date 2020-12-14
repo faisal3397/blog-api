@@ -4,7 +4,7 @@ import json
 from flask_sqlalchemy import SQLAlchemy
 
 
-from src.main import create_app
+from src.app import create_app
 from src.database.models import setup_db, Post, Comment
 
 
