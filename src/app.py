@@ -1,4 +1,9 @@
-from flask import Flask, request, jsonify, abort
+from flask import (
+    Flask,
+    request,
+    jsonify,
+    abort
+)
 from flask_cors import CORS
 from src.database.models import setup_db, Post, Comment
 from src.auth.auth import AuthError, requires_auth
@@ -10,6 +15,20 @@ def create_app():
     app = Flask(__name__)
     setup_db(app)
     CORS(app)
+
+    @app.after_request
+    def after_request(response):
+        response.headers.add('Access-Control-Allow-Headers',
+                             'Content-Type, Authorization')
+        response.headers.add('Access-Control-Allow-Methods',
+                             'GET, POST, PATCH, DELETE, OPTIONS')
+        return response
+
+    @app.route('/')
+    def index():
+        return jsonify({
+            "message": "Welcome to Blog API"
+        })
 
     @app.route('/posts')
     def get_posts():
@@ -48,9 +67,9 @@ def create_app():
     @requires_auth('post:posts')
     def create_post(jwt):
         body = request.get_json()
-        title = body.get('title', None)
-        date = body.get('date', None)
-        content = body.get('content', None)
+        title = body.get('title')
+        date = body.get('date')
+        content = body.get('content')
 
         if title is None or date is None or content is None:
             abort(400)
@@ -64,7 +83,7 @@ def create_app():
                 'post': post.format()
             }), 201
 
-        except():
+        except Exception:
             abort(400)
 
     @app.route('/posts/<int:post_id>', methods=['PATCH'])
@@ -91,7 +110,7 @@ def create_app():
                 'post': post.format()
             })
 
-        except():
+        except Exception:
             abort(422)
 
     @app.route('/posts/<int:post_id>', methods=['DELETE'])
@@ -111,15 +130,15 @@ def create_app():
                 "delete": post.id
             })
 
-        except():
+        except Exception:
             abort(422)
 
     @app.route('/posts/<int:post_id>/comments', methods=['POST'])
     @requires_auth('post:comments')
     def create_comment(jwt, post_id):
         body = request.get_json()
-        date = body.get('date', None)
-        content = body.get('content', None)
+        date = body.get('date')
+        content = body.get('content')
 
         if date is None or content is None:
             abort(400)
@@ -138,7 +157,7 @@ def create_app():
                 'comment': comment.format()
             }), 201
 
-        except():
+        except Exception:
             abort(400)
 
     # Error Handling
