@@ -58,13 +58,13 @@ psql blog < blog.psql
 From within the `/src` directory first ensure you are working using your created virtual environment.
 
 To run the server, execute:
-- ###On Linux or Mac OS run:
+- On Linux or Mac OS run:
     ```bash
     export FLASK_APP=app.py
     export FLASK_ENV=development
     flask run --reload
     ```
-- ###On Windows run:
+- On Windows run:
     ```bash
     set FLASK_APP=app.py
     set FLASK_ENV=development
