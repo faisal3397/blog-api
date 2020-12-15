@@ -23,7 +23,9 @@ class Post(db.Model):
     title = Column(String)
     date = Column(DateTime)
     content = Column(String)
-    comments = relationship('Comment', cascade='all, delete', passive_deletes=True)
+    comments = relationship('Comment',
+                            cascade='all, delete',
+                            passive_deletes=True)
 
     def __init__(self, title, date, content):
         self.title = title

@@ -15,7 +15,8 @@ class BlogTestCase(unittest.TestCase):
         self.app = app
         self.client = self.app.test_client
         self.database_name = "blog_test"
-        self.database_path = "postgres://{}/{}".format('localhost:5432', self.database_name)
+        self.database_path = "postgres://{}/{}".format('localhost:5432',
+                                                       self.database_name)
         setup_db(self.app, self.database_path)
 
         self.new_post = {
@@ -78,7 +79,9 @@ class BlogTestCase(unittest.TestCase):
 
     def test_create_new_post_bad_request(self):
         headers = {'Authorization': 'Bearer {}'.format(self.blog_owner_token)}
-        res = self.client().post('/posts', json=self.bad_request_post, headers=headers)
+        res = self.client().post('/posts',
+                                 json=self.bad_request_post,
+                                 headers=headers)
         data = json.loads(res.data)
 
         self.assertEqual(res.status_code, 400)
@@ -88,7 +91,9 @@ class BlogTestCase(unittest.TestCase):
 
     def test_create_comment(self):
         headers = {'Authorization': 'Bearer {}'.format(self.blog_owner_token)}
-        res = self.client().post('/posts/3/comments', json=self.comment, headers=headers)
+        res = self.client().post('/posts/3/comments',
+                                 json=self.comment,
+                                 headers=headers)
         data = json.loads(res.data)
 
         self.assertEqual(res.status_code, 201)
@@ -97,7 +102,9 @@ class BlogTestCase(unittest.TestCase):
 
     def test_create_comment_bad_request(self):
         headers = {'Authorization': 'Bearer {}'.format(self.blog_owner_token)}
-        res = self.client().post('/posts/3/comments', json=self.bad_request_comment, headers=headers)
+        res = self.client().post('/posts/3/comments',
+                                 json=self.bad_request_comment,
+                                 headers=headers)
         data = json.loads(res.data)
 
         self.assertEqual(res.status_code, 400)
@@ -139,7 +146,9 @@ class BlogTestCase(unittest.TestCase):
 
     def test_update_post(self):
         headers = {'Authorization': 'Bearer {}'.format(self.blog_owner_token)}
-        res = self.client().patch('/posts/3', json=self.updated_post, headers=headers)
+        res = self.client().patch('/posts/3',
+                                  json=self.updated_post,
+                                  headers=headers)
         data = json.loads(res.data)
 
         self.assertEqual(res.status_code, 200)
@@ -148,7 +157,9 @@ class BlogTestCase(unittest.TestCase):
 
     def test_update_post_not_found(self):
         headers = {'Authorization': 'Bearer {}'.format(self.blog_owner_token)}
-        res = self.client().patch('/posts/3000', json=self.updated_post, headers=headers)
+        res = self.client().patch('/posts/3000',
+                                  json=self.updated_post,
+                                  headers=headers)
         data = json.loads(res.data)
 
         self.assertEqual(res.status_code, 404)
@@ -158,7 +169,8 @@ class BlogTestCase(unittest.TestCase):
 
     def test_delete_post(self):
         headers = {'Authorization': 'Bearer {}'.format(self.blog_owner_token)}
-        res = self.client().delete('/posts/11', headers=headers)
+        res = self.client().delete('/posts/11',
+                                   headers=headers)
         data = json.loads(res.data)
 
         post = Post.query.filter(Post.id == 6).one_or_none()
@@ -170,7 +182,8 @@ class BlogTestCase(unittest.TestCase):
 
     def test_delete_post_not_found(self):
         headers = {'Authorization': 'Bearer {}'.format(self.blog_owner_token)}
-        res = self.client().delete('/posts/1000', headers=headers)
+        res = self.client().delete('/posts/1000',
+                                   headers=headers)
         data = json.loads(res.data)
 
         self.assertEqual(res.status_code, 404)
@@ -181,7 +194,8 @@ class BlogTestCase(unittest.TestCase):
     # Auth User is not allowed to delete post
     def test_delete_post_as_auth_user(self):
         headers = {'Authorization': 'Bearer {}'.format(self.auth_user_token)}
-        res = self.client().delete('/posts/11', headers=headers)
+        res = self.client().delete('/posts/11',
+                                   headers=headers)
         data = json.loads(res.data)
 
         self.assertEqual(res.status_code, 401)
