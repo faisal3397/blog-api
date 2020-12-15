@@ -54,8 +54,9 @@ psql blog < blog.psql
 ```
 
 ## Running the server
-
-From within the `/src` directory first ensure you are working using your created virtual environment.
+- First, run this command within `/blog-api` directory
+    `source setup.sh`
+- Then, move to the `/src` directory and ensure you are working using your created virtual environment.
 
 To run the server, execute:
 - On Linux or Mac OS run:
