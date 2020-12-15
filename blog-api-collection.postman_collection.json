@@ -28,7 +28,7 @@
 	"variables": [
 		{
 			"key": "host",
-			"value": "http://127.0.0.1:5000/",
+			"value": "https://blog-api-fsnd.herokuapp.com",
 			"disabled": false
 		}
 	],
@@ -288,7 +288,7 @@
 		{
 			"id": "4b1e9337-5809-4cdd-a2d3-9df8e6eb887f",
 			"name": "/posts/{id}",
-			"url": "{{host}}/posts/7",
+			"url": "{{host}}/posts/10",
 			"description": "",
 			"data": null,
 			"dataOptions": null,
@@ -498,7 +498,7 @@
 		{
 			"id": "94ddc0c4-0fe7-4922-8826-ad401749914f",
 			"name": "/posts",
-			"url": "{{host}}/posts",
+			"url": "{{host}}/posts?page=1",
 			"description": "",
 			"data": null,
 			"dataOptions": null,
@@ -506,7 +506,15 @@
 			"headerData": null,
 			"method": "GET",
 			"pathVariableData": [],
-			"queryParams": [],
+			"queryParams": [
+				{
+					"key": "page",
+					"value": "1",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				}
+			],
 			"auth": null,
 			"events": [
 				{
@@ -632,7 +640,7 @@
 				}
 			],
 			"folder": "9eb4f485-eab4-4044-bf1d-8228182904a0",
-			"rawModeData": "{\n    \"title\": \"Modified title 123\",\n    \"date\": \"Tue, 08 Dec 2020 16:53:58 GMT\",\n    \"content\": \"Modified content 1232341242\"\n}",
+			"rawModeData": "{\"title\": \"Modified title 123\",\"date\": \"Tue, 08 Dec 2020 16:53:58 GMT\",\"content\": \"Modified content 1232341242\"}",
 			"pathVariables": {}
 		},
 		{
