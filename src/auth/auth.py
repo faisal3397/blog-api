@@ -50,7 +50,7 @@ def get_auth_header():
 
 
 def verify_decode_jwt(token):
-    # Note: urlopen has a common certificate error described here: 
+    # Note: urlopen has a common certificate error described here:
     # https://stackoverflow.com/questions/50236117/scraping-ssl-certificate-verify-failed-error-for-http-en-wikipedia-org
     json_url = urlopen(f'https://{AUTH0_DOMAIN}/.well-known/jwks.json')
     jwks = json.loads(json_url.read())
