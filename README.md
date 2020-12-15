@@ -8,6 +8,11 @@ The API has two kind of users:
  - Blog Owner, the one who's able to create, edit, and delete posts.
  - Authenticated User, the one who's able to view posts, and comment on them.
 
+## Why did I develop this project?
+It's required from all the students who're enrolled in Udacity's Full-Stack Nanodegree
+ to develop a capstone project from scratch and the students are free to pick any idea and turn it into a live project,
+  so my idea was to develop this Blog API.
+
 ## Getting Started
 - Base URL:  `https://blog-api-fsnd.herokuapp.com/`.
 
