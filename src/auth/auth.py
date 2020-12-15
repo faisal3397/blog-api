@@ -6,8 +6,9 @@ from functools import wraps
 from urllib.request import urlopen
 
 AUTH0_DOMAIN = os.environ.get('AUTH0_DOMAIN')
-ALGORITHMS = os.environ.get('ALGORITHMS')
+ALGORITHMS = os.environ.get['ALGORITHMS']
 API_AUDIENCE = os.environ.get('API_AUDIENCE')
+
 
 class AuthError(Exception):
     def __init__(self, error, status_code):
@@ -49,6 +50,8 @@ def get_auth_header():
 
 
 def verify_decode_jwt(token):
+    # Note: urlopen has a common certificate error described here: 
+    # https://stackoverflow.com/questions/50236117/scraping-ssl-certificate-verify-failed-error-for-http-en-wikipedia-org
     json_url = urlopen(f'https://{AUTH0_DOMAIN}/.well-known/jwks.json')
     jwks = json.loads(json_url.read())
     unverified_header = jwt.get_unverified_header(token)
