@@ -83,7 +83,7 @@ def create_app():
                 'post': post.format()
             }), 201
 
-        except Exception:
+        except():
             abort(400)
 
     @app.route('/posts/<int:post_id>', methods=['PATCH'])
@@ -110,7 +110,7 @@ def create_app():
                 'post': post.format()
             })
 
-        except Exception:
+        except():
             abort(422)
 
     @app.route('/posts/<int:post_id>', methods=['DELETE'])
@@ -130,7 +130,7 @@ def create_app():
                 "delete": post.id
             })
 
-        except Exception:
+        except():
             abort(422)
 
     @app.route('/posts/<int:post_id>/comments', methods=['POST'])
@@ -157,7 +157,7 @@ def create_app():
                 'comment': comment.format()
             }), 201
 
-        except Exception:
+        except():
             abort(400)
 
     # Error Handling
