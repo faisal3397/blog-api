@@ -68,6 +68,7 @@ Setting the `FLASK_APP` variable to `app.py` directs flask to use the `app.py` f
 ## Testing
 To run the tests, navigate to `/blog-api` directory in the terminal and run:
 ```
+source setup.sh
 dropdb blog_test
 createdb blog_test
 psql blog_test < blog.psql

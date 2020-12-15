@@ -3,13 +3,15 @@ from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import Column, String, Integer, DateTime, ForeignKey
 from sqlalchemy.orm import relationship
 
-database_path = os.environ["DATABASE_URL"]
+database_path = os.environ.get("DATABASE_URL", None)
+database_name = "blog_test"
+local_database_path = "postgres://{}/{}".format('localhost:5432', database_name)
 
 db = SQLAlchemy()
 
 
 def setup_db(app, database_path=database_path):
-    app.config['SQLALCHEMY_DATABASE_URI'] = database_path
+    app.config['SQLALCHEMY_DATABASE_URI'] = database_path if database_path else local_database_path
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
     db.app = app
     db.init_app(app)
