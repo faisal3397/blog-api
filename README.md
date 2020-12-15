@@ -34,7 +34,7 @@ We recommend working within a virtual environment whenever using Python for proj
 Once you have your virtual environment setup and running, install dependencies by navigating to the `/blog-api` directory and running:
 
 ```bash
-pip install -r requirements.txt
+pip3 install -r requirements.txt
 ```
 
 This will install all of the required packages we selected within the `requirements.txt` file.
@@ -58,12 +58,18 @@ psql blog < blog.psql
 From within the `/src` directory first ensure you are working using your created virtual environment.
 
 To run the server, execute:
-
-```bash
-export FLASK_APP=app.py
-export FLASK_ENV=development
-flask run --reload
-```
+- ###On Linux or Mac OS run:
+    ```bash
+    export FLASK_APP=app.py
+    export FLASK_ENV=development
+    flask run --reload
+    ```
+- ###On Windows run:
+    ```bash
+    set FLASK_APP=app.py
+    set FLASK_ENV=development
+    flask run --reload
+    ```
 
 Setting the `FLASK_ENV` variable to `development` will detect file changes and restart the server automatically.
 
