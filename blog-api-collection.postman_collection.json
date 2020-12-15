@@ -1,0 +1,829 @@
+{
+	"id": "01069296-fe24-45c0-903a-8d43ee522ee6",
+	"name": "blog-api-collection",
+	"description": "A Simple Blog REST API, developed using Flask",
+	"auth": null,
+	"events": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "d718e421-12ab-455a-beeb-fb039f2efab9",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "2974e2f9-ed90-48d1-9633-19e06e483941",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variables": [
+		{
+			"key": "host",
+			"value": "http://127.0.0.1:5000/",
+			"disabled": false
+		}
+	],
+	"order": [],
+	"folders_order": [
+		"d4fec3af-ea98-47e3-af12-ff8e6966c770",
+		"ecf9aa79-1aee-4608-88c2-057464a14718",
+		"9eb4f485-eab4-4044-bf1d-8228182904a0"
+	],
+	"protocolProfileBehavior": {},
+	"folders": [
+		{
+			"id": "ecf9aa79-1aee-4608-88c2-057464a14718",
+			"name": "auth-users",
+			"description": "",
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6ImhNTW4tMThuMTJoS3FtS1NERzBhUyJ9.eyJpc3MiOiJodHRwczovL2ZzbmQzMzk3LnVzLmF1dGgwLmNvbS8iLCJzdWIiOiJhdXRoMHw1ZmMyMDc4YTFiZGEwMDAwNzVlMWU2Y2QiLCJhdWQiOiJibG9nLWFwaSIsImlhdCI6MTYwODAxNzM3MywiZXhwIjoxNjA4MTAzNzczLCJhenAiOiJxdHVrRkI5UFgyb2s1MTJkQk1rT0p0QktxdXV1VU1EMyIsInNjb3BlIjoiIiwicGVybWlzc2lvbnMiOlsicG9zdDpjb21tZW50cyJdfQ.FgxFyCUFrcspwD_ne0i3NrODqcP020HEEbGz8w0bvF4gYkYJdCvGQzZsA8EiDoi0sfJwiiQdObTWmeysy7bmoQF-i8MxHDzdx3aY31weCYqyhC7BWTw_VdbHkj-4FT4bpE6m6H1i34hVlV1BN8Hhi0dr2YYjiZsfx2TszrTGLVS6kobM-G-wmHTjPQjqUvq-fiChJX36dJyzXxNyrtwfbGFL9l8H-02C_rIk14mv75aLvCCqOUErUozQGsOj-jb5GzJsB3ZzqqbUnW7e3bfSirJ2PZWKqGmpJ-BPe7cTqmFdZqK8ODu1psDwm4fX04cNuc5RR5PP6W1AEgvTPkjD1w"
+					}
+				]
+			},
+			"events": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "5350ee59-7d9d-441d-90cf-5f7d816255da",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "d6f8f8c3-277a-4a82-a043-9735c75e10ae",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			],
+			"collection": "01069296-fe24-45c0-903a-8d43ee522ee6",
+			"folder": null,
+			"order": [
+				"bff28218-570d-4ac6-9ab0-812c31ca9275",
+				"9e0d8d2a-6e1a-4373-b39f-70468103a35d",
+				"30af9e1e-f849-4ca8-8c51-4dd8b35ed7d0",
+				"587c5367-19f6-4833-ae9e-7bab27cb9c18",
+				"820a446f-d7e8-4065-8a5a-cc32ad44e0f3",
+				"a155e56d-f41f-4d78-bc9b-7cb8050516ba"
+			],
+			"folders_order": [],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"id": "9eb4f485-eab4-4044-bf1d-8228182904a0",
+			"name": "blog-owner",
+			"description": "",
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6ImhNTW4tMThuMTJoS3FtS1NERzBhUyJ9.eyJpc3MiOiJodHRwczovL2ZzbmQzMzk3LnVzLmF1dGgwLmNvbS8iLCJzdWIiOiJhdXRoMHw1ZmIzZGIyYjJlNThlYjAwNmY1NmE3NjEiLCJhdWQiOiJibG9nLWFwaSIsImlhdCI6MTYwODAxNzI4NiwiZXhwIjoxNjA4MTAzNjg2LCJhenAiOiJxdHVrRkI5UFgyb2s1MTJkQk1rT0p0QktxdXV1VU1EMyIsInNjb3BlIjoiIiwicGVybWlzc2lvbnMiOlsiZGVsZXRlOnBvc3RzIiwicGF0Y2g6cG9zdHMiLCJwb3N0OmNvbW1lbnRzIiwicG9zdDpwb3N0cyJdfQ.FkWLSPra7G6KOk_AGvtLc2fV0Gev21NxFOAyLlYe4k7tpcOwBTVAF0OOG8-55glJH8HenxpSKG4Ek33V87H2jbG3Ei2zgy7wQowJrAx0K-o2IWQJQyYGuJSR6LpVwOyWWrXs_oRsnmYl_EGvhUk6GtlqCRgjFCQ-fBbWqdqfT_L9wjVP6ayCoZVUSq_lHOWg5i5jVAZdfqhlwkFHQruHkHbfDI7Qz4SanIWINHWJDejNnTQqorKUWW9srJC4BqpBPIWOhv3EqmIhzOw0enY5jgZWhfPDD0ZW1N2-TDCgKSUjK-LEX3nJGF_-qbjF5iimWUDDoidS33BkGz46MdmEXA"
+					}
+				]
+			},
+			"events": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "a64ac9cd-1111-4fa1-995a-b8d6c0b31660",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "194936b1-54b5-4337-8583-141ff74e1092",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			],
+			"collection": "01069296-fe24-45c0-903a-8d43ee522ee6",
+			"folder": null,
+			"order": [
+				"94ddc0c4-0fe7-4922-8826-ad401749914f",
+				"1fcf0c96-859b-4297-ad07-1e77720c5332",
+				"5bf5ae1f-9324-457a-9591-e79c580db0b3",
+				"c9012f8a-b54c-4b9d-b318-f0d0a804d12e",
+				"ade58eb9-42ee-4142-98d9-dc3e5548bd4a",
+				"4b1e9337-5809-4cdd-a2d3-9df8e6eb887f"
+			],
+			"folders_order": [],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"id": "d4fec3af-ea98-47e3-af12-ff8e6966c770",
+			"name": "public",
+			"description": "",
+			"auth": {
+				"type": "noauth"
+			},
+			"events": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "617a1aed-c31a-448a-bc23-032e21b0e61a",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "204a2f04-4455-4e1d-887d-9bf1d68e72d3",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			],
+			"collection": "01069296-fe24-45c0-903a-8d43ee522ee6",
+			"folder": null,
+			"order": [
+				"89016b24-e2e5-4127-a945-e12d6aeb3268",
+				"e9937716-562e-4443-ba11-a76421697b32",
+				"f7590b2d-d368-493d-b6a7-bacdc55ceb89",
+				"385ff8de-7d29-4c0c-948c-f79f2e6a8c35",
+				"b34103fe-bf86-4e7b-8b76-d3f747ad5c0a",
+				"501948dc-2ae6-48cf-8982-1217972f1eed"
+			],
+			"folders_order": [],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"requests": [
+		{
+			"id": "1fcf0c96-859b-4297-ad07-1e77720c5332",
+			"name": "/posts/{id}/comments",
+			"url": "{{host}}/posts/1/comments",
+			"description": "",
+			"data": null,
+			"dataOptions": null,
+			"dataMode": null,
+			"headerData": null,
+			"method": "GET",
+			"pathVariableData": [],
+			"queryParams": [],
+			"auth": null,
+			"events": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "98409deb-f752-4964-9681-8003ea7d9c4f",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"value contains drinks array\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.comments).to.be.an('array')",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"folder": "9eb4f485-eab4-4044-bf1d-8228182904a0",
+			"pathVariables": {}
+		},
+		{
+			"id": "30af9e1e-f849-4ca8-8c51-4dd8b35ed7d0",
+			"name": "/posts",
+			"url": "{{host}}/posts",
+			"description": "",
+			"data": [],
+			"dataOptions": {
+				"raw": {
+					"language": "json"
+				}
+			},
+			"dataMode": "raw",
+			"headerData": null,
+			"method": "POST",
+			"pathVariableData": [],
+			"queryParams": [],
+			"auth": null,
+			"events": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "cf44d9f9-6228-44c5-ba68-ffdc85dc9a85",
+						"exec": [
+							"pm.test(\"Status code is 401\", function () {",
+							"    pm.response.to.have.status(401);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"folder": "ecf9aa79-1aee-4608-88c2-057464a14718",
+			"rawModeData": "{\n    \"title\": \"My New Post 3\",\n    \"date\": \"Tue, 08 Dec 2020 15:53:58 GMT\",\n    \"content\": \"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\"\n}",
+			"pathVariables": {}
+		},
+		{
+			"id": "385ff8de-7d29-4c0c-948c-f79f2e6a8c35",
+			"name": "/posts/{id}/comments",
+			"url": "{{host}}/posts/1/comments",
+			"description": "",
+			"data": [],
+			"dataOptions": {
+				"raw": {
+					"language": "json"
+				}
+			},
+			"dataMode": "raw",
+			"headerData": null,
+			"method": "POST",
+			"pathVariableData": [],
+			"queryParams": [],
+			"auth": null,
+			"events": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "b953f8fe-ed1f-4213-8b37-470386c6e9a7",
+						"exec": [
+							"pm.test(\"Status code is 401\", function () {",
+							"    pm.response.to.have.status(401);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"folder": "d4fec3af-ea98-47e3-af12-ff8e6966c770",
+			"rawModeData": "{\n    \"content\": \"Hi your post #3 is great\",\n    \"date\": \"Tue, 08 Dec 2020 16:02:48 GMT\"\n}",
+			"pathVariables": {}
+		},
+		{
+			"id": "4b1e9337-5809-4cdd-a2d3-9df8e6eb887f",
+			"name": "/posts/{id}",
+			"url": "{{host}}/posts/7",
+			"description": "",
+			"data": null,
+			"dataOptions": null,
+			"dataMode": null,
+			"headerData": null,
+			"method": "DELETE",
+			"pathVariableData": [],
+			"queryParams": [],
+			"auth": null,
+			"events": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "32ac6ce4-cde1-4ba0-a9ee-d2064cc72b4b",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"folder": "9eb4f485-eab4-4044-bf1d-8228182904a0",
+			"pathVariables": {}
+		},
+		{
+			"id": "501948dc-2ae6-48cf-8982-1217972f1eed",
+			"name": "/posts/{id}",
+			"url": "{{host}}/posts/22342",
+			"description": "",
+			"data": null,
+			"dataOptions": null,
+			"dataMode": null,
+			"headerData": null,
+			"method": "DELETE",
+			"pathVariableData": [],
+			"queryParams": [],
+			"auth": null,
+			"events": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "c149991c-eda5-460d-971d-bbc3a785b2e7",
+						"exec": [
+							"pm.test(\"Status code is 401\", function () {",
+							"    pm.response.to.have.status(401);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"folder": "d4fec3af-ea98-47e3-af12-ff8e6966c770",
+			"pathVariables": {}
+		},
+		{
+			"id": "587c5367-19f6-4833-ae9e-7bab27cb9c18",
+			"name": "/posts/{id}/comments",
+			"url": "{{host}}/posts/1/comments",
+			"description": "",
+			"data": [],
+			"dataOptions": {
+				"raw": {
+					"language": "json"
+				}
+			},
+			"dataMode": "raw",
+			"headerData": null,
+			"method": "POST",
+			"pathVariableData": [],
+			"queryParams": [],
+			"auth": null,
+			"events": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "a0e7d3b6-559b-465a-9177-3cbec4a784e6",
+						"exec": [
+							"pm.test(\"Status code is 201\", function () {",
+							"    pm.response.to.have.status(201);",
+							"});",
+							"",
+							"pm.test(\"comment is included in the response\", function() {",
+							"    var responseData = pm.response.json()",
+							"    pm.expect(responseData.comment).to.be.an(\"object\")",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"folder": "ecf9aa79-1aee-4608-88c2-057464a14718",
+			"rawModeData": "{\n    \"content\": \"That info was so useful, thanks a lot and keep up the good work\",\n    \"date\": \"Tue, 15 Dec 2020 08:07:48 GMT\"\n}",
+			"pathVariables": {}
+		},
+		{
+			"id": "5bf5ae1f-9324-457a-9591-e79c580db0b3",
+			"name": "/posts",
+			"url": "{{host}}/posts",
+			"description": "",
+			"data": [],
+			"dataOptions": {
+				"raw": {
+					"language": "json"
+				}
+			},
+			"dataMode": "raw",
+			"headerData": null,
+			"method": "POST",
+			"pathVariableData": [],
+			"queryParams": [],
+			"auth": null,
+			"events": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "fb8a5e6a-d11a-4d08-ba97-098282f093c3",
+						"exec": [
+							"pm.test(\"Status code is 201\", function () {",
+							"    pm.response.to.have.status(201);",
+							"});",
+							"",
+							"pm.test(\"post is included in the response\", function() {",
+							"    var responseData = pm.response.json()",
+							"    pm.expect(responseData.post).to.be.an(\"object\")",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"folder": "9eb4f485-eab4-4044-bf1d-8228182904a0",
+			"rawModeData": "{\n    \"title\": \"My New Post 6\",\n    \"date\": \"Tue, 15 Dec 2020 08:08:58 GMT\",\n    \"content\": \"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\"\n}",
+			"pathVariables": {}
+		},
+		{
+			"id": "820a446f-d7e8-4065-8a5a-cc32ad44e0f3",
+			"name": "/posts/{id}",
+			"url": "{{host}}/posts/2",
+			"description": "",
+			"data": [],
+			"dataOptions": {
+				"raw": {
+					"language": "json"
+				}
+			},
+			"dataMode": "raw",
+			"headerData": null,
+			"method": "PATCH",
+			"pathVariableData": [],
+			"queryParams": [],
+			"auth": null,
+			"events": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "7bce2f52-2a9f-44a0-bafb-0ab3873b930c",
+						"exec": [
+							"pm.test(\"Status code is 401\", function () {",
+							"    pm.response.to.have.status(401);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"folder": "ecf9aa79-1aee-4608-88c2-057464a14718",
+			"rawModeData": "{\n    \"title\": \"Modified title 123\",\n    \"date\": \"Tue, 08 Dec 2020 16:53:58 GMT\",\n    \"content\": \"Modified content 1232341242\"\n}",
+			"pathVariables": {}
+		},
+		{
+			"id": "89016b24-e2e5-4127-a945-e12d6aeb3268",
+			"name": "/posts",
+			"url": "{{host}}/posts",
+			"description": "",
+			"data": null,
+			"dataOptions": null,
+			"dataMode": null,
+			"headerData": null,
+			"method": "GET",
+			"pathVariableData": [],
+			"queryParams": [],
+			"auth": null,
+			"events": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "c0718ea1-69f7-4efb-8531-09dc738104df",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"value contains drinks array\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.posts).to.be.an('array')",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"folder": "d4fec3af-ea98-47e3-af12-ff8e6966c770",
+			"pathVariables": {}
+		},
+		{
+			"id": "94ddc0c4-0fe7-4922-8826-ad401749914f",
+			"name": "/posts",
+			"url": "{{host}}/posts",
+			"description": "",
+			"data": null,
+			"dataOptions": null,
+			"dataMode": null,
+			"headerData": null,
+			"method": "GET",
+			"pathVariableData": [],
+			"queryParams": [],
+			"auth": null,
+			"events": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "776f324d-8fcb-4896-ac99-191764926a80",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"value contains drinks array\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.posts).to.be.an('array')",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"folder": "9eb4f485-eab4-4044-bf1d-8228182904a0",
+			"pathVariables": {}
+		},
+		{
+			"id": "9e0d8d2a-6e1a-4373-b39f-70468103a35d",
+			"name": "/posts/{id}/comments",
+			"url": "{{host}}/posts/1/comments",
+			"description": "",
+			"data": null,
+			"dataOptions": null,
+			"dataMode": null,
+			"headerData": null,
+			"method": "GET",
+			"pathVariableData": [],
+			"queryParams": [],
+			"auth": null,
+			"events": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "dcea7aae-1410-4fa5-9e3a-3187533ae95a",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"value contains drinks array\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.comments).to.be.an('array')",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"folder": "ecf9aa79-1aee-4608-88c2-057464a14718",
+			"pathVariables": {}
+		},
+		{
+			"id": "a155e56d-f41f-4d78-bc9b-7cb8050516ba",
+			"name": "/posts/{id}",
+			"url": "{{host}}/posts/22342",
+			"description": "",
+			"data": null,
+			"dataOptions": null,
+			"dataMode": null,
+			"headerData": null,
+			"method": "DELETE",
+			"pathVariableData": [],
+			"queryParams": [],
+			"auth": null,
+			"events": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "d9aedeb3-9c77-412f-80fb-6a9f39ac83ae",
+						"exec": [
+							"pm.test(\"Status code is 401\", function () {",
+							"    pm.response.to.have.status(401);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"folder": "ecf9aa79-1aee-4608-88c2-057464a14718",
+			"pathVariables": {}
+		},
+		{
+			"id": "ade58eb9-42ee-4142-98d9-dc3e5548bd4a",
+			"name": "/posts/{id}",
+			"url": "{{host}}/posts/1",
+			"description": "",
+			"data": [],
+			"dataOptions": {
+				"raw": {
+					"language": "json"
+				}
+			},
+			"dataMode": "raw",
+			"headerData": null,
+			"method": "PATCH",
+			"pathVariableData": [],
+			"queryParams": [],
+			"auth": null,
+			"events": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "c1c41d36-0d54-43ec-8525-ebac81778284",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"post is included in the response\", function() {",
+							"    var responseData = pm.response.json()",
+							"    pm.expect(responseData.post).to.be.an(\"object\")",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"folder": "9eb4f485-eab4-4044-bf1d-8228182904a0",
+			"rawModeData": "{\n    \"title\": \"Modified title 123\",\n    \"date\": \"Tue, 08 Dec 2020 16:53:58 GMT\",\n    \"content\": \"Modified content 1232341242\"\n}",
+			"pathVariables": {}
+		},
+		{
+			"id": "b34103fe-bf86-4e7b-8b76-d3f747ad5c0a",
+			"name": "/posts/{id}",
+			"url": "{{host}}/posts/2",
+			"description": "",
+			"data": [],
+			"dataOptions": {
+				"raw": {
+					"language": "json"
+				}
+			},
+			"dataMode": "raw",
+			"headerData": null,
+			"method": "PATCH",
+			"pathVariableData": [],
+			"queryParams": [],
+			"auth": null,
+			"events": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "e4f9da40-84ff-4e5f-994d-335e6dfb87b6",
+						"exec": [
+							"pm.test(\"Status code is 401\", function () {",
+							"    pm.response.to.have.status(401);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"folder": "d4fec3af-ea98-47e3-af12-ff8e6966c770",
+			"rawModeData": "{\n    \"title\": \"Modified title 123\",\n    \"date\": \"Tue, 08 Dec 2020 16:53:58 GMT\",\n    \"content\": \"Modified content 1232341242\"\n}",
+			"pathVariables": {}
+		},
+		{
+			"id": "bff28218-570d-4ac6-9ab0-812c31ca9275",
+			"name": "/posts",
+			"url": "{{host}}/posts",
+			"description": "",
+			"data": null,
+			"dataOptions": null,
+			"dataMode": null,
+			"headerData": null,
+			"method": "GET",
+			"pathVariableData": [],
+			"queryParams": [],
+			"auth": null,
+			"events": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "94ee8c97-422a-4a29-8eb0-2f987d9e7d39",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"value contains drinks array\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.posts).to.be.an('array')",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"folder": "ecf9aa79-1aee-4608-88c2-057464a14718",
+			"pathVariables": {}
+		},
+		{
+			"id": "c9012f8a-b54c-4b9d-b318-f0d0a804d12e",
+			"name": "/posts/{id}/comments",
+			"url": "{{host}}/posts/1/comments",
+			"description": "",
+			"data": [],
+			"dataOptions": {
+				"raw": {
+					"language": "json"
+				}
+			},
+			"dataMode": "raw",
+			"headerData": null,
+			"method": "POST",
+			"pathVariableData": [],
+			"queryParams": [],
+			"auth": null,
+			"events": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "be370153-81e0-4ff7-b7a2-d7b550189171",
+						"exec": [
+							"pm.test(\"Status code is 201\", function () {",
+							"    pm.response.to.have.status(201);",
+							"});",
+							"",
+							"pm.test(\"comment is included in the response\", function() {",
+							"    var responseData = pm.response.json()",
+							"    pm.expect(responseData.comment).to.be.an(\"object\")",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"folder": "9eb4f485-eab4-4044-bf1d-8228182904a0",
+			"rawModeData": "{\n    \"content\": \"Hi your post #1 is great\",\n    \"date\": \"Tue, 08 Dec 2020 16:02:48 GMT\"\n}",
+			"pathVariables": {}
+		},
+		{
+			"id": "e9937716-562e-4443-ba11-a76421697b32",
+			"name": "/posts/{id}/comments",
+			"url": "{{host}}/posts/1/comments",
+			"description": "",
+			"data": null,
+			"dataOptions": null,
+			"dataMode": null,
+			"headerData": null,
+			"method": "GET",
+			"pathVariableData": [],
+			"queryParams": [],
+			"auth": null,
+			"events": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "1f04cf84-b1a8-4662-86e2-81eb58e3689c",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"value contains drinks array\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.comments).to.be.an('array')",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"folder": "d4fec3af-ea98-47e3-af12-ff8e6966c770",
+			"pathVariables": {}
+		},
+		{
+			"id": "f7590b2d-d368-493d-b6a7-bacdc55ceb89",
+			"name": "/posts",
+			"url": "{{host}}/posts",
+			"description": "",
+			"data": [],
+			"dataOptions": {
+				"raw": {
+					"language": "json"
+				}
+			},
+			"dataMode": "raw",
+			"headerData": null,
+			"method": "POST",
+			"pathVariableData": [],
+			"queryParams": [],
+			"auth": null,
+			"events": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "84d6dcc2-43bc-46e1-b94c-e337e351f5f7",
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "49b6e253-04cc-4073-a2d5-82ab777f45e4",
+						"exec": [
+							"pm.test(\"Status code is 401\", function () {",
+							"    pm.response.to.have.status(401);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"folder": "d4fec3af-ea98-47e3-af12-ff8e6966c770",
+			"rawModeData": "{\n    \"title\": \"My New Post 3\",\n    \"date\": \"Tue, 08 Dec 2020 15:53:58 GMT\",\n    \"content\": \"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\"\n}",
+			"pathVariables": {}
+		}
+	]
+}
