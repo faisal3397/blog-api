@@ -259,7 +259,7 @@ The API will return four error types when requests fail:
     
     ```
         {
-            "delete": 7,
+            "delete": 1,
             "success": true
         }
     ```
