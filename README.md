@@ -101,8 +101,8 @@ The API will return four error types when requests fail:
     
     - Sample: `curl GET https://blog-api-fsnd.herokuapp.com/posts?page=1`
     
-    
-       {
+     ```
+               {
             "posts": [
                 {
                     "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
@@ -144,6 +144,7 @@ The API will return four error types when requests fail:
             "success": true,
             "total_posts": 6
         }
+     ```
         
 
     
@@ -154,42 +155,43 @@ The API will return four error types when requests fail:
     - Auth: None
     - Sample: `curl GET https://blog-api-fsnd.herokuapp.com/posts/1/comments`  
 
-
-    {
-        "comments": [
-            {
-                "content": "Hi your post #1 is great",
-                "date": "Tue, 08 Dec 2020 16:02:48 GMT",
-                "id": 1,
-                "post_id": 1
-            },
-            {
-                "content": "I don't really agree with your post",
-                "date": "Tue, 15 Dec 2020 08:07:48 GMT",
-                "id": 2,
-                "post_id": 1
-            },
-            {
-                "content": "That info was so useful, thanks a lot and keep up the good work",
-                "date": "Tue, 15 Dec 2020 08:07:48 GMT",
-                "id": 3,
-                "post_id": 1
-            },
-            {
-                "content": "That info was so useful, thanks a lot and keep up the good work",
-                "date": "Tue, 15 Dec 2020 08:07:48 GMT",
-                "id": 4,
-                "post_id": 1
-            },
-            {
-                "content": "Hi your post #1 is great",
-                "date": "Tue, 08 Dec 2020 16:02:48 GMT",
-                "id": 5,
-                "post_id": 1
-            }
-        ],
-        "success": true
-    }
+    ```
+        {
+            "comments": [
+                {
+                    "content": "Hi your post #1 is great",
+                    "date": "Tue, 08 Dec 2020 16:02:48 GMT",
+                    "id": 1,
+                    "post_id": 1
+                },
+                {
+                    "content": "I don't really agree with your post",
+                    "date": "Tue, 15 Dec 2020 08:07:48 GMT",
+                    "id": 2,
+                    "post_id": 1
+                },
+                {
+                    "content": "That info was so useful, thanks a lot and keep up the good work",
+                    "date": "Tue, 15 Dec 2020 08:07:48 GMT",
+                    "id": 3,
+                    "post_id": 1
+                },
+                {
+                    "content": "That info was so useful, thanks a lot and keep up the good work",
+                    "date": "Tue, 15 Dec 2020 08:07:48 GMT",
+                    "id": 4,
+                    "post_id": 1
+                },
+                {
+                    "content": "Hi your post #1 is great",
+                    "date": "Tue, 08 Dec 2020 16:02:48 GMT",
+                    "id": 5,
+                    "post_id": 1
+                }
+            ],
+            "success": true
+        }
+    ```
    
 - ### POST /posts
     - General:
@@ -198,16 +200,17 @@ The API will return four error types when requests fail:
     
     - Sample: `curl -d '{"title": "My New Post 6","date": "Tue, 15 Dec 2020 08:08:58 GMT","content": "Lorem ipsum dolor sit amet"}' -H "Content-Type: application/json"  -H "Authorization: Bearer {token}" -X POST https://blog-api-fsnd.herokuapp.com/posts`
     
-    
-    {
-        "post": {
-            "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-            "date": "Tue, 15 Dec 2020 08:08:58 GMT",
-            "id": 8,
-            "title": "My New Post 6"
-        },
-        "success": true
-    }
+    ```
+        {
+            "post": {
+                "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+                "date": "Tue, 15 Dec 2020 08:08:58 GMT",
+                "id": 8,
+                "title": "My New Post 6"
+            },
+            "success": true
+        }
+    ```
 
 - ### POST /posts/{id}/comments
     - General:
@@ -216,16 +219,17 @@ The API will return four error types when requests fail:
     
     - Sample: `curl -d '{"content": "Hi your post #1 is great","date": "Tue, 08 Dec 2020 16:02:48 GMT"}' -H "Content-Type: application/json"  -H "Authorization: Bearer {token}" -X POST https://blog-api-fsnd.herokuapp.com/posts/1/comments`
     
-    
-    {
-        "comment": {
-            "content": "Hi your post #1 is great",
-            "date": "Tue, 08 Dec 2020 16:02:48 GMT",
-            "id": 6,
-            "post_id": 1
-        },
-        "success": true
-    }
+    ```
+        {
+            "comment": {
+                "content": "Hi your post #1 is great",
+                "date": "Tue, 08 Dec 2020 16:02:48 GMT",
+                "id": 6,
+                "post_id": 1
+            },
+            "success": true
+        }
+  ```
 
 - ### PATCH /posts/{id}
     - General:
@@ -234,16 +238,17 @@ The API will return four error types when requests fail:
     
     - Sample: `curl -d '{"title": "Modified title 123","date": "Tue, 08 Dec 2020 16:53:58 GMT","content": "Modified content 1232341242"}' -H "Content-Type: application/json"  -H "Authorization: Bearer {token}" -X PATCH https://blog-api-fsnd.herokuapp.com/posts/1`
     
-    
-    {
-        "post": {
-            "content": "Modified content 1232341242",
-            "date": "Tue, 08 Dec 2020 16:53:58 GMT",
-            "id": 1,
-            "title": "Modified title 123"
-        },
-        "success": true
-    }
+    ```
+        {
+            "post": {
+                "content": "Modified content 1232341242",
+                "date": "Tue, 08 Dec 2020 16:53:58 GMT",
+                "id": 1,
+                "title": "Modified title 123"
+            },
+            "success": true
+        }
+    ```
 
 - ### DELETE /posts/{id}
     - General:
@@ -252,8 +257,9 @@ The API will return four error types when requests fail:
     
     - Sample: `curl -H "Content-Type: application/json"  -H "Authorization: Bearer {token}" DELETE https://blog-api-fsnd.herokuapp.com/posts/1`
     
-    
-    {
-        "delete": 7,
-        "success": true
-    }
+    ```
+        {
+            "delete": 7,
+            "success": true
+        }
+    ```
